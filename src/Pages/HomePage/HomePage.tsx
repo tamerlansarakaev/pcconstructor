@@ -1,9 +1,10 @@
-import './HomePage.less';
+import Select from '../../components/UI/Selector/Select';
+import './HomePage.scss';
 
 const HomePage = () => {
   return (
-    <div>
-      <p className='homepage'>Hello World</p>
+    <div className="home-page">
+      <Select title="Материнская плата" options={[]} errorOptionsMessage='Данные не загрузились' />
     </div>
   );
 };
