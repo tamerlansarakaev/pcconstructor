@@ -1,15 +1,29 @@
-import React, { FC } from 'react';
+import { combineReducers } from 'redux';
 
-interface IRootReducer {
-  state: any;
-  action: any;
+interface Action {
+  type: string;
 }
 
-const rootReducer = ({ state, action }: IRootReducer) => {
-  switch (action) {
-    default:
+const initalStore = {
+  data: {},
+};
+
+const rootReducer = (state = initalStore, action: Action) => {
+  switch (action.type) {
+    case 'DATA_LOADED': {
+      return {
+        ...state,
+        data: '',
+      };
+    }
+    default: {
       return state;
+    }
   }
 };
 
-export default rootReducer;
+const allReducers = combineReducers({
+  rootReducer,
+});
+
+export default allReducers;

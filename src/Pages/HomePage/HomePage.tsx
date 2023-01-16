@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import Select from '../../components/UI/Selector/Select';
+import './HomePage.scss';
 
-export default class HomePage extends Component {
-  render() {
-    return <div>HomePage</div>;
-  }
-}
+const HomePage = () => {
+  return (
+    <div className="home-page">
+      <Select title="Материнская плата" options={[]} errorOptionsMessage='Данные не загрузились' />
+    </div>
+  );
+};
+
+export default HomePage;
