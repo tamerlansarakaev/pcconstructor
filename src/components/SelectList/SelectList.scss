@@ -1,0 +1,9 @@
+.select-list {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+  .select {
+    box-shadow: 1px 1px 3px #000;
+  }
+}
