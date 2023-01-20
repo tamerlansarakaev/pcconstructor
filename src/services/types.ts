@@ -1,0 +1,5 @@
+export const types = {
+  DATA_LOADED: 'DATA_LOADED',
+  DATA_LOADING: 'DATA_LOADING',
+  DATA_CHANGE: 'DATA_CHANGE',
+};

@@ -1,18 +1,31 @@
-// Styles
-import './Select.scss';
+// Global
+import React from 'react';
 import ReactSelect from 'react-select';
 
-interface ISelector {
-  options: Array<string>;
-  title: string;
-  errorOptionsMessage: string;
+// Styles
+import './Select.scss';
+
+interface IOptions {
+  label: string;
+  value: string;
+  price?: string;
 }
 
-export default function Select({
-  options,
-  title,
-  errorOptionsMessage,
-}: ISelector) {
+export interface ISelector {
+  title: string;
+  errorOptionsMessage: string;
+  options: IOptions[];
+}
+
+function Select({ options, title, errorOptionsMessage }: ISelector) {
+  const [currentValue, setCurrentValue] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (currentValue) {
+      console.log(currentValue);
+    }
+  }, [currentValue]);
+
   return (
     <div className={`select`}>
       <p className="select-title">{title}</p>
@@ -20,6 +33,7 @@ export default function Select({
         className="select-options"
         menuPosition="absolute"
         isSearchable={false}
+        onChange={(state: any) => setCurrentValue(state?.label)}
         noOptionsMessage={() => errorOptionsMessage}
         styles={{
           control: (baseStyles) => ({
@@ -29,20 +43,20 @@ export default function Select({
             borderRadius: 12,
             backgroundColor: '#fff',
             cursor: 'pointer',
-            zIndex: '2',
           }),
           menu() {
             return {
               position: 'absolute',
               width: '100%',
-              top: '30px',
+              top: '40px',
               fontFamily: 'Inter',
               backgroundColor: '#fff',
               boxShadow: '1px 5px 15px #000',
+              zIndex: 2,
               borderBottomLeftRadius: '12px',
               boxSizing: 'border-box',
               borderBottomRightRadius: '12px',
-              padding: '12px',
+              padding: '8px',
             };
           },
           option() {
@@ -68,8 +82,18 @@ export default function Select({
             };
           },
         }}
-        options={options}
+        options={options.map((option) => {
+          return {
+            label: (
+              <div>
+                <p color="#000">{option.label}</p>
+              </div>
+            ),
+            value: option.value,
+          };
+        })}
       />
     </div>
   );
 }
+export default React.memo(Select);

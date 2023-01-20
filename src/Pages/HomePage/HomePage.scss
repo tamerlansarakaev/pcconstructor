@@ -1,3 +1,49 @@
 .home-page {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .basic-info {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pc-image {
+    display: flex;
+    max-width: 1000px;
+    height: 700px;
+  }
+
+  .total-price-title {
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .total-price {
+    color: #ee1f1f;
+  }
+
+  .checkout-button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Inter;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: 0.5s;
+    background: #ee1f1f;
+  }
+  .checkout-button:hover {
+    cursor: pointer;
+    background: #f83b3b;
+  }
 }

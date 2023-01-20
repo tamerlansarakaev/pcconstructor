@@ -1,19 +1,35 @@
 import { combineReducers } from 'redux';
+import { types } from '../types';
 
-interface Action {
+interface IAction {
   type: string;
+  data: object;
+}
+
+export interface IDataItemsState {
+  CPU: Array<object>;
+  GPU: Array<object>;
+  RAM: Array<object>;
+  motherboard: Array<object>;
+  powerSupply: Array<object>;
+  SSD: Array<object>;
 }
 
 const initalStore = {
-  data: {},
+  CPU: [],
+  GPU: [],
+  RAM: [],
+  motherboard: [],
+  powerSupply: [],
+  SSD: [],
 };
 
-const rootReducer = (state = initalStore, action: Action) => {
+const rootReducer = (state = initalStore, action: IAction) => {
   switch (action.type) {
-    case 'DATA_LOADED': {
+    case types.DATA_LOADED: {
       return {
         ...state,
-        data: '',
+        data: action.data,
       };
     }
     default: {
